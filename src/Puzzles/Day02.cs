@@ -7,8 +7,18 @@ public class Day02 : Day, IPuzzle
 {
     public string Puzzle1()
     {
+        return CalculatePosition();
+    }
+
+    public string Puzzle2()
+    {
+        return CalculatePosition(true);
+    }
+
+    private string CalculatePosition(bool useAim = false)
+    {
         int depth = 0, horizontalPosition = 0;
-        var submarine = new Submarine();
+        var submarine = new Submarine(useAim);
 
         foreach (var value in Input)
         {
@@ -18,10 +28,5 @@ public class Day02 : Day, IPuzzle
         var result = depth * horizontalPosition;
 
         return result.ToString();
-    }
-
-    public string Puzzle2()
-    {
-        throw new NotImplementedException();
     }
 }
