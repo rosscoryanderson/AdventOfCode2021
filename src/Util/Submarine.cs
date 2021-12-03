@@ -94,22 +94,6 @@ public class Submarine
             if (oxygenGeneratorRatings.Count == 1 && co2ScrubberRatings.Count == 1) break;
         }
 
-        // foreach (var item in diagnosticReportValues)
-        // {
-        //     var mostCommon = item.Value >= threshold ? '1' : '0';
-        //     var leastCommon = item.Value >= threshold ? '0' : '1';
-        //
-        //     if (oxygenGeneratorRatings.Count > 1)
-        //     {
-        //         oxygenGeneratorRatings = oxygenGeneratorRatings.Where(x => x[item.Key] == mostCommon).ToList();
-        //     }
-        //
-        //     if (co2ScrubberRatings.Count > 1)
-        //     {
-        //         co2ScrubberRatings = co2ScrubberRatings.Where(x => x[item.Key] == leastCommon).ToList();
-        //     }
-        // }
-
         var oxygenGeneratorRating = Convert.ToInt32(oxygenGeneratorRatings.First(), 2);
         var co2ScrubberRating = Convert.ToInt32(co2ScrubberRatings.First(), 2);
 
