@@ -6,8 +6,8 @@ public class Day
 
     protected Day(string inputLocation = @"C:\Dev\aoc\aoc2021\src\Input\")
     {
-        var file = $"{this.GetType().Name}.txt";
+        var file = $"{GetType().Name}.txt";
 
-        Input = Util.FileReader.ReadFileToList(inputLocation + file);
+        Input = Util.FileReader.ReadFileToList($"{inputLocation}{file}");
     }
 }

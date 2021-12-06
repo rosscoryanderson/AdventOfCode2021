@@ -1,4 +1,4 @@
-﻿namespace src.Util;
+﻿namespace src.Features;
 
 public class MeasurementWindow
 {

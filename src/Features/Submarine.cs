@@ -1,7 +1,8 @@
-﻿namespace src.Util;
+﻿namespace src.Features;
 
 public class Submarine
 {
+    
     private int _depth;
     private int _horizontalPosition;
     private int _aim;
@@ -98,8 +99,9 @@ public class Submarine
         var co2ScrubberRating = Convert.ToInt32(co2ScrubberRatings.First(), 2);
 
         return oxygenGeneratorRating * co2ScrubberRating;
-
     }
+
+    
 
     private Dictionary<int, int> ParseDiagnosticReport(List<string> input)
     {
