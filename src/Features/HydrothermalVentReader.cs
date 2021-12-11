@@ -1,9 +1,9 @@
-﻿namespace src.Features;
+﻿using src.Domain;
+
+namespace src.Features;
 
 public class HydrothermalVentReader
 {
-    private record Coordinate(int x, int y);
-
     private readonly List<string> _input;
     private Dictionary<Coordinate, int> _hydrothermalVents;
     
@@ -78,14 +78,14 @@ public class HydrothermalVentReader
 
     private bool PopulateHorizontalLines(Coordinate firstCoordinate, Coordinate secondCoordinate)
     {
-        if (firstCoordinate.y != secondCoordinate.y) return false;
+        if (firstCoordinate.Y != secondCoordinate.Y) return false;
         
-        var lowPoint = firstCoordinate.x > secondCoordinate.x ? secondCoordinate.x : firstCoordinate.x;
-        var highPoint = firstCoordinate.x < secondCoordinate.x ? secondCoordinate.x : firstCoordinate.x;
+        var lowPoint = firstCoordinate.X > secondCoordinate.X ? secondCoordinate.X : firstCoordinate.X;
+        var highPoint = firstCoordinate.X < secondCoordinate.X ? secondCoordinate.X : firstCoordinate.X;
         
         for (var x = lowPoint + 1; x < highPoint; x++)
         {
-            var pathCoordinate = new Coordinate(x, firstCoordinate.y);
+            var pathCoordinate = new Coordinate(x, firstCoordinate.Y);
             UpsertCoordinate(pathCoordinate);
         }
 
@@ -94,14 +94,14 @@ public class HydrothermalVentReader
     
     private bool PopulateVerticalLines(Coordinate firstCoordinate, Coordinate secondCoordinate)
     {
-        if (firstCoordinate.x != secondCoordinate.x) return false;
+        if (firstCoordinate.X != secondCoordinate.X) return false;
         
-        var lowPoint = firstCoordinate.y > secondCoordinate.y ? secondCoordinate.y : firstCoordinate.y;
-        var highPoint = firstCoordinate.y < secondCoordinate.y ? secondCoordinate.y : firstCoordinate.y;
+        var lowPoint = firstCoordinate.Y > secondCoordinate.Y ? secondCoordinate.Y : firstCoordinate.Y;
+        var highPoint = firstCoordinate.Y < secondCoordinate.Y ? secondCoordinate.Y : firstCoordinate.Y;
             
         for (var y = lowPoint + 1; y < highPoint; y++)
         {
-            var pathCoordinate = new Coordinate(firstCoordinate.x, y);
+            var pathCoordinate = new Coordinate(firstCoordinate.X, y);
             UpsertCoordinate(pathCoordinate);
         }
 
@@ -110,18 +110,18 @@ public class HydrothermalVentReader
     
     private bool PopulateDiagonalLines(Coordinate firstCoordinate, Coordinate secondCoordinate)
     {
-        var xOffset = Math.Abs(firstCoordinate.x - secondCoordinate.x);
-        var yOffset = Math.Abs(firstCoordinate.y - secondCoordinate.y);
+        var xOffset = Math.Abs(firstCoordinate.X - secondCoordinate.X);
+        var yOffset = Math.Abs(firstCoordinate.Y - secondCoordinate.Y);
         
         if (xOffset != yOffset) return false;
 
-        var xOffSetMultiplier = firstCoordinate.x < secondCoordinate.x ? 1 : -1;
-        var yOffSetMultiplier = firstCoordinate.y < secondCoordinate.y ? 1 : -1;
+        var xOffSetMultiplier = firstCoordinate.X < secondCoordinate.X ? 1 : -1;
+        var yOffSetMultiplier = firstCoordinate.Y < secondCoordinate.Y ? 1 : -1;
         
         for (var i = 1; i < xOffset; i++)
         {
-            var x = firstCoordinate.x + (i * xOffSetMultiplier);
-            var y = firstCoordinate.y + (i * yOffSetMultiplier);
+            var x = firstCoordinate.X + (i * xOffSetMultiplier);
+            var y = firstCoordinate.Y + (i * yOffSetMultiplier);
             
             var pathCoordinate = new Coordinate(x, y);
             UpsertCoordinate(pathCoordinate);
