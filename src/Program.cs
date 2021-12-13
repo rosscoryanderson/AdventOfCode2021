@@ -1,6 +1,6 @@
 ﻿using src.Puzzles;
 
-var day = new Day12();
+var day = new Day13();
 
 // Console.WriteLine(day.Puzzle1());
 Console.WriteLine(day.Puzzle2());
