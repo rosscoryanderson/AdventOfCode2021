@@ -15,9 +15,6 @@ public class PacketOperatorCalculator
             1 => CalculateProduct,
             2 => CalculateMinimum,
             3 => CalculateMaximum,
-            // case 4:
-            //     CalculateFunction = CalculateGreaterThan;
-            //     break;
             5 => CalculateGreaterThan,
             6 => CalculateLessThan,
             7 => CalculateEqualTo,
